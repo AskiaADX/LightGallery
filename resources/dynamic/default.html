@@ -1,0 +1,52 @@
+{%
+dim i
+dim imagePaths = CurrentADC.PropValue("path")
+dim allImages = imagePaths.Split()
+dim imageCaptions = CurrentADC.PropValue("captions")
+dim allCaptions = imageCaptions.Split()
+dim showCaptions = CurrentADC.PropValue("showCaptions")
+%}
+<div id="adc_{%= CurrentADC.InstanceId %}" class="adc-lightGallery">
+    <ul id="lightgallery">
+    {% For i = 1 To allImages.Count %}<li>
+    	<a href="{%:= allImages[i] %}" {% if showCaptions = "1" Then %}title="{%= allCaptions[i] %}"{% EndIf %}>
+            {% If allImages[i].IndexOf("youtube", true) > 0 Then %}
+            <img src="https://img.youtube.com/vi/{%= allImages[i].Substring( (allImages[i].IndexOf("v=") + 2) ) %}/0.jpg" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
+            {% ElseIf allImages[i].IndexOf("vimeo", true) > 0 Then %}
+            <script>
+                function vimeoLoadingThumb(id){    
+                    var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
+
+                    var id_img = "#vimeo-" + id;
+                    var script = document.createElement( 'script' );
+                    script.type = 'text/javascript';
+                    script.src = url;
+
+                    $(id_img).before(script);
+                }
+
+                function showThumb(data){
+                    var id_img = "#vimeo-" + data[0].id;
+                    $(id_img).attr('src',data[0].thumbnail_medium);
+                }
+
+                $(function() {
+                    vimeoLoadingThumb({%= allImages[i].Substring( (allImages[i].IndexOf("vimeo.com/") + 10) ) %});
+                });
+            </script>
+            <img id="vimeo-{%= allImages[i].Substring( (allImages[i].IndexOf("vimeo.com/") + 10) ) %}" src="" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
+            {% Else %}	
+			<img src="{%:= allImages[i] %}" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
+            {% EndIf %}
+            <div class="gallery-poster">
+                <img src="{%= CurrentADC.URLTo("static/zoom.png") %}">
+            </div>
+		</a>
+        {% if showCaptions = "1" Then %}
+			<div class="caption">
+				<h4>{%= allCaptions[i] %}</h4>
+      		</div>
+        {% EndIf %}
+        </li>{% Next %}
+    </div>
+</div>

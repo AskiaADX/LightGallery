@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<control  xmlns="http://www.askia.com/ADCSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.askia.com/ADCSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/Config.xsd"
+          version="2.0.0"
+          askiaCompat="5.3.3">
+  <info>
+    <name>adc2-lightGallery</name>
+    <guid>c9141526-1cff-4825-827f-a44615d33567</guid>
+    <version>1.0.0</version>
+    <date>2016-06-07</date>
+    <description><![CDATA[Lightbox Gallery]]></description>
+    <company>Askia</company>
+    <author><![CDATA[Paul Ferreira <paulf@askia.com>]]></author>
+    <site>http://www.askia.com</site>
+    <helpURL></helpURL>
+    <categories>
+      <category>General</category>
+    </categories>
+    <style width="400" height="300" />
+    <constraints>
+      <constraint on="questions" chapter="true" single="false" multiple="false" numeric="false" date="false" open="false" requireParentLoop="false" />
+      <constraint on="controls" responseblock="false" label="true" textbox="false" listbox="false" radiobutton="false" />
+      <constraint on="responses" max="*" min="*" />
+    </constraints>
+  </info>
+  <outputs defaultOutput="default">
+    <output id="default">
+      <description><![CDATA[Default output]]></description>
+      <condition><![CDATA[Browser.Support("javascript")]]></condition>
+      <content fileName="styles.css" type="css" mode="dynamic" position="head" />
+      <content fileName="standard.html" type="html" mode="dynamic" position="placeholder" />
+      <content fileName="lightgallery.min.css" type="css" mode="static" position="head" />
+      <content fileName="lg-transitions.min.css" type="css" mode="static" position="head" />
+      <content fileName="jquery-1.12.4.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="jquery-migrate-1.4.1.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lightgallery.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg-thumbnail.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg-fullscreen.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg-autoplay.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg-video.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg-zoom.min.js" type="javascript" mode="static" position="head" />
+      <content fileName="lg.js" type="javascript" mode="static" position="foot" />
+      <content fileName="standard.js" type="javascript" mode="dynamic" position="head" />
+      <content fileName="default.html" type="html" mode="dynamic" position="none" />
+      <content fileName="zoom.png" type="image" mode="static" position="none" />
+      <content fileName="video-play.png" type="image" mode="static" position="none" />
+      <content fileName="vimeo-play.png" type="image" mode="static" position="none" />
+      <content fileName="youtube-play.png" type="image" mode="static" position="none" />
+      <content fileName="loading.gif" type="image" mode="static" position="none" />
+      <content fileName="lg.eot" type="image" mode="static" position="none" />
+      <content fileName="lg.svg" type="image" mode="static" position="none" />
+      <content fileName="lg.ttf" type="image" mode="static" position="none" />
+      <content fileName="lg.woff" type="image" mode="static" position="none" />
+    </output>
+    <output id="fallback">
+      <description><![CDATA[fallback]]></description>
+      <condition><![CDATA[Not(Browser.Support("javascript"))]]></condition>
+      <content fileName="lightgallery.min.css" type="css" mode="static" position="head" />
+      <content fileName="styles.css" type="css" mode="dynamic" position="head" />
+      <content fileName="default.html" type="html" mode="dynamic" position="placeholder" />
+    </output>
+  </outputs>
+  <properties>
+    <category id="General" name="General">
+      <property xsi:type="standardProperty" id="fontSize" name="Font Size" type="string" mode="static">
+        <description><![CDATA[The font size for the control]]></description>
+        <value><![CDATA[14px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="controlWidth" name="Control Width" type="string" mode="static">
+        <description><![CDATA[The width of the control]]></description>
+        <value><![CDATA[100%]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="maxWidth" name="Max Width" type="string" mode="static">
+        <description><![CDATA[The maximum width of the control]]></description>
+        <value><![CDATA[100%]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="controlAlign" name="Control Alignment" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The alignment of the control]]></description>
+        <value><![CDATA[center]]></value>
+        <options>
+          <option value="left" text="Left" />
+          <option value="center" text="Center" />
+          <option value="right" text="Right" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="path" name="Path of the images" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Path of the image(s) separated by commas]]></description>
+        <value><![CDATA[??ResPath??image.png]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="captions" name="Captions of the images" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Captions of the image(s) separated by commas]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="showCounter" name="Show Counter" type="boolean" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Show or hide counter]]></description>
+        <value><![CDATA[false]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="showCaptions" name="Show Captions" type="boolean" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Show or hide captions]]></description>
+        <value><![CDATA[false]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="captionAlignment" name="Caption Alignment" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The alignment of the captions]]></description>
+        <value><![CDATA[center]]></value>
+        <options>
+          <option value="left" text="Left" />
+          <option value="center" text="Center" />
+          <option value="right" text="Right" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="showThumbs" name="Show Thumbnails" type="boolean" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Show or hide thumbnails under fullscreen view]]></description>
+        <value><![CDATA[false]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="hoverColour" name="Hover Colour" type="color" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Set hover colour for thumbnails]]></description>
+        <value><![CDATA[000,000,000]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="showControls" name="Show Previous and Next" type="boolean" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Show or hide previous and next buttons for images]]></description>
+        <value><![CDATA[true]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="transitionEffect" name="Transition Effect" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The effect shown when changing between images]]></description>
+        <value><![CDATA[lg-slide]]></value>
+        <options>
+          <option value="lg-slide" text="Slide" />
+          <option value="lg-fade" text="Fade" />
+          <option value="lg-zoom-in" text="Zoom in" />
+          <option value="lg-zoom-in-big" text="Zoom in big" />
+          <option value="lg-zoom-out" text="Zoom out" />
+          <option value="lg-zoom-out-big" text="Zoom out big" />
+          <option value="lg-zoom-out-in" text="Zoom out in" />
+          <option value="lg-zoom-in-out" text="Zoom in out" />
+          <option value="lg-soft-zoom" text="Soft zoom" />
+          <option value="lg-scale-up" text="Scale up" />
+          <option value="lg-slide-circular" text="Slide circular" />
+          <option value="lg-slide-circular-vertical" text="Slide circular vertical" />
+          <option value="lg-slide-vertical" text="Slide vertical" />
+          <option value="lg-slide-vertical-growth" text="Slide vertical growth" />
+          <option value="lg-slide-skew-only" text="Slide skew only" />
+          <option value="lg-slide-skew-only-rev" text="Slide skew only reverse" />
+          <option value="lg-slide-skew-only-y" text="Slide skew only y" />
+          <option value="lg-slide-skew-only-y-rev" text="Slide skew only y reverse" />
+          <option value="lg-slide-skew" text="Slide skew" />
+          <option value="lg-slide-skew-rev" text="Slide skew reverse" />
+          <option value="lg-slide-skew-cross" text="Slide skew cross" />
+          <option value="lg-slide-skew-cross-rev" text="Slide skew cross reverse" />
+          <option value="lg-slide-skew-ver" text="Slide skew ver" />
+          <option value="lg-slide-skew-ver-rev" text="Slide skew ver reverse" />
+          <option value="lg-slide-skew-ver-cross" text="Slide skew ver cross" />
+          <option value="lg-slide-skew-ver-cross-rev" text="Slide skew ver cross reverse" />
+          <option value="lg-lollipop" text="Lollipop" />
+          <option value="lg-lollipop-rev" text="Lollipop reverse" />
+          <option value="lg-rotate" text="Rotate" />
+          <option value="lg-rotate-rev" text="Rotate reverse" />
+          <option value="lg-tube" text="Tube" />
+        </options>
+      </property>
+    </category>
+    <category id="Thumbnails" name="Thumbnails">
+      <property xsi:type="standardProperty" id="thumbBorderColour" name="Thumb Border Colour" type="color" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Thumbnail border colour]]></description>
+        <value><![CDATA[000,000,000]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="thumbBorderThickness" name="Thumb Border Thickness" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Thumbnail border thickness]]></description>
+        <value><![CDATA[nojustify]]></value>
+        <options>
+          <option value="0px" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbBorderStyle" name="Thumb Border Style" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Thumbnail border style]]></description>
+        <value><![CDATA[solid]]></value>
+        <options>
+          <option value="solid" text="Solid" />
+          <option value="dashed" text="Dashed" />
+          <option value="dotted" text="Dotted" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbBorderRadius" name="Thumb Border Radius" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The amount of curve on the thumbnail border]]></description>
+        <value><![CDATA[nojustify]]></value>
+        <options>
+          <option value="0px" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbPadding" name="Thumbnail padding" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The amount of padding around the thumbnail]]></description>
+        <value><![CDATA[-1]]></value>
+        <options>
+          <option value="0" text="None" />
+          <option value="1" text="1px" />
+          <option value="2" text="2px" />
+          <option value="3" text="3px" />
+          <option value="4" text="4px" />
+          <option value="5" text="5px" />
+          <option value="6" text="6px" />
+          <option value="7" text="7px" />
+          <option value="8" text="8px" />
+          <option value="9" text="9px" />
+          <option value="10" text="10px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbMargin" name="Thumbnail margin" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[The margin around each thumbnail]]></description>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="0" text="None" />
+          <option value="1" text="1px" />
+          <option value="2" text="2px" />
+          <option value="3" text="3px" />
+          <option value="4" text="4px" />
+          <option value="5" text="5px" />
+          <option value="6" text="6px" />
+          <option value="7" text="7px" />
+          <option value="8" text="8px" />
+          <option value="9" text="9px" />
+          <option value="10" text="10px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbMaxHW" name="Thumbnail max height or width" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Enable max height or max width]]></description>
+        <value><![CDATA[none]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="maxH" text="Max height" />
+          <option value="maxW" text="Max width" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="thumbMaxValue" name="Thumbnail max length" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Set value for max height or max width]]></description>
+        <value></value>
+      </property>
+    </category>
+  </properties>
+</control>
