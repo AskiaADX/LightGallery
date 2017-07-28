@@ -23,7 +23,8 @@
         	$(this).next('.caption').width( $(this).find('img').width() );
 		});
 		
-		lightGallery(document.getElementById('lightgallery'), {
+		//lightGallery(document.getElementById('lightgallery'), {
+   		lightGallery(document.querySelector('#adc_'+ options.instanceId+' #lightgallery'), {
 			download: false,
 			counter: showCounter,
 			getCaptionFromTitleOrAlt: showCaptions,
