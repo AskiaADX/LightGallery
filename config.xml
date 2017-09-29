@@ -7,7 +7,7 @@
   <info>
     <name>LightGallery</name>
     <guid>c9141526-1cff-4825-827f-a44615d33567</guid>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <date>2016-06-07</date>
     <description><![CDATA[Lightbox Gallery]]></description>
     <company>Askia</company>
@@ -91,13 +91,21 @@
         <description><![CDATA[Captions of the image(s) separated by commas]]></description>
         <value></value>
       </property>
-      <property xsi:type="standardProperty" id="showCounter" name="Show Counter" type="boolean" mode="dynamic" require="true" visible="true">
+      <property xsi:type="standardProperty" id="showCounter" name="Show Counter" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show or hide counter]]></description>
-        <value><![CDATA[false]]></value>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
-      <property xsi:type="standardProperty" id="showCaptions" name="Show Captions" type="boolean" mode="dynamic" require="true" visible="true">
+      <property xsi:type="standardProperty" id="showCaptions" name="Show Captions" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show or hide captions]]></description>
-        <value><![CDATA[false]]></value>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="captionAlignment" name="Caption Alignment" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[The alignment of the captions]]></description>
@@ -108,17 +116,25 @@
           <option value="right" text="Right" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showThumbs" name="Show Thumbnails" type="boolean" mode="dynamic" require="true" visible="true">
+      <property xsi:type="standardProperty" id="showThumbs" name="Show Thumbnails" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show or hide thumbnails under fullscreen view]]></description>
-        <value><![CDATA[false]]></value>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="hoverColour" name="Hover Colour" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Set hover colour for thumbnails]]></description>
         <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showControls" name="Show Previous and Next" type="boolean" mode="dynamic" require="true" visible="true">
+      <property xsi:type="standardProperty" id="showControls" name="Show Previous and Next" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show or hide previous and next buttons for images]]></description>
-        <value><![CDATA[true]]></value>
+        <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="transitionEffect" name="Transition Effect" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[The effect shown when changing between images]]></description>
