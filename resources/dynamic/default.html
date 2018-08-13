@@ -39,7 +39,7 @@ dim showCaptions = CurrentADC.PropValue("showCaptions")
 			<img src="{%:= allImages[i] %}" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
             {% EndIf %}
             <div class="gallery-poster">
-                <img src="{%= CurrentADC.URLTo("static/zoom.png") %}">
+                <img src="{%= CurrentADC.URLTo("static/zoom.png") %}" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %} zoom"{% EndIf %}>
             </div>
 		</a>
         {% if showCaptions = "1" Then %}
