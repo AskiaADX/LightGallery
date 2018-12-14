@@ -7,7 +7,7 @@
   <info>
     <name>LightGallery</name>
     <guid>c9141526-1cff-4825-827f-a44615d33567</guid>
-    <version>2.0.2</version>
+    <version>3.0.0</version>
     <date>2016-06-07</date>
     <description><![CDATA[Lightbox Gallery
 		v2.0.3 - Added alt attribute to img]]></description>
@@ -19,7 +19,7 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" />
+      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" RequireLoopDepth="false" />
       <constraint on="controls" responseblock="false" label="true" textbox="false" listbox="false" radiobutton="false" checkbox="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
