@@ -19,13 +19,13 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" RequireLoopDepth="0" />
+      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" requireLoopDepth="0" />
       <constraint on="controls" responseblock="false" label="true" textbox="false" listbox="false" radiobutton="false" checkbox="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
   </info>
   <outputs defaultOutput="default">
-    <output id="default" ManageLoopDepth="0">
+    <output id="default" manageLoopDepth="0">
       <description><![CDATA[Default output]]></description>
       <condition><![CDATA[Browser.Support("javascript")]]></condition>
       <content fileName="styles.css" type="css" mode="dynamic" position="head" />
@@ -53,7 +53,7 @@
       <content fileName="lg.ttf" type="image" mode="static" position="none" />
       <content fileName="lg.woff" type="image" mode="static" position="none" />
     </output>
-    <output id="fallback" ManageLoopDepth="0">
+    <output id="fallback" manageLoopDepth="0">
       <description><![CDATA[fallback]]></description>
       <condition><![CDATA[Not(Browser.Support("javascript"))]]></condition>
       <content fileName="lightgallery.min.css" type="css" mode="static" position="head" />
