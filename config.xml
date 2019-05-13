@@ -7,10 +7,11 @@
   <info>
     <name>LightGallery</name>
     <guid>c9141526-1cff-4825-827f-a44615d33567</guid>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <date>2016-06-07</date>
     <description><![CDATA[Lightbox Gallery
-		v2.0.3 - Added alt attribute to img]]></description>
+		v2.0.3 - Added alt attribute to img
+    v3.0.1 - Horizontal orientation]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -19,13 +20,13 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" requireLoopDepth="0" />
+      <constraint on="questions" chapter="true" single="true" multiple="true" numeric="true" date="true" open="true" requireParentLoop="false" />
       <constraint on="controls" responseblock="false" label="true" textbox="false" listbox="false" radiobutton="false" checkbox="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
   </info>
   <outputs defaultOutput="default">
-    <output id="default" manageLoopDepth="0">
+    <output id="default">
       <description><![CDATA[Default output]]></description>
       <condition><![CDATA[Browser.Support("javascript")]]></condition>
       <content fileName="styles.css" type="css" mode="dynamic" position="head" />
@@ -53,7 +54,7 @@
       <content fileName="lg.ttf" type="image" mode="static" position="none" />
       <content fileName="lg.woff" type="image" mode="static" position="none" />
     </output>
-    <output id="fallback" manageLoopDepth="0">
+    <output id="fallback">
       <description><![CDATA[fallback]]></description>
       <condition><![CDATA[Not(Browser.Support("javascript"))]]></condition>
       <content fileName="lightgallery.min.css" type="css" mode="static" position="head" />
@@ -172,6 +173,14 @@
           <option value="lg-rotate" text="Rotate" />
           <option value="lg-rotate-rev" text="Rotate reverse" />
           <option value="lg-tube" text="Tube" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="orientation" name="LightGallery Orientation" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Orientate the LightGallery.]]></description>
+        <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Vertical" />
+          <option value="2" text="Horizontal" />
         </options>
       </property>
     </category>

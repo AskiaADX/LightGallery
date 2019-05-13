@@ -5,6 +5,7 @@ dim allImages = imagePaths.Split()
 dim imageCaptions = CurrentADC.PropValue("captions")
 dim allCaptions = imageCaptions.Split()
 dim showCaptions = CurrentADC.PropValue("showCaptions")
+dim orientation = CurrentADC.PropValue("orientation")
 %}
 <div id="adc_{%= CurrentADC.InstanceId %}" class="adc-lightGallery">
     <ul id="lightgallery">
@@ -14,7 +15,7 @@ dim showCaptions = CurrentADC.PropValue("showCaptions")
             <img src="https://img.youtube.com/vi/{%= allImages[i].Substring( (allImages[i].IndexOf("v=") + 2) ) %}/0.jpg" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
             {% ElseIf allImages[i].IndexOf("vimeo", true) > 0 Then %}
             <script>
-                function vimeoLoadingThumb(id){    
+                function vimeoLoadingThumb(id){
                     var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
 
                     var id_img = "#vimeo-" + id;
@@ -35,7 +36,7 @@ dim showCaptions = CurrentADC.PropValue("showCaptions")
                 });
             </script>
             <img id="vimeo-{%= allImages[i].Substring( (allImages[i].IndexOf("vimeo.com/") + 10) ) %}" src="" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
-            {% Else %}	
+            {% Else %}
 			<img src="{%:= allImages[i] %}" class="img-responsive thumbnail" {% if showCaptions = "1" Then %}alt="{%= allCaptions[i] %}"{% EndIf %} />
             {% EndIf %}
             <div class="gallery-poster">

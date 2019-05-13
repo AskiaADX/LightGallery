@@ -10,6 +10,7 @@ Dim thumbMaxHW = CurrentADC.PropValue("thumbMaxHW")
 Dim thumbMaxValue = CurrentADC.PropValue("thumbMaxValue")
 Dim captionAlignment = CurrentADC.PropValue("captionAlignment")
 Dim fontSize = CurrentADC.PropValue("fontSize")
+Dim ar = CurrentQuestion.AvailableResponses
 Dim controlAlign
 If (CurrentADC.PropValue("controlAlign") = "center" ) Then
     controlAlign = "0 auto"
@@ -18,15 +19,27 @@ ElseIf (CurrentADC.PropValue("controlAlign") = "right" ) Then
 Else
     controlAlign = "0 auto 0 0"
 EndIf
+
+Dim isHorizontal = 0
+If (CurrentADC.PropValue("orientation") = "2") Then
+  isHorizontal = 1
+EndIf
 %}
 #adc_{%= CurrentADC.InstanceId %} {
-    width: {%= CurrentADC.PropValue("maxWidth") %};
+    {% IF isHorizontal = 1 Then %}
+      width: auto;
+    {% Else %}
+      width: {%= CurrentADC.PropValue("maxWidth") %};
+    {% EndIf %}
     max-width: {%= CurrentADC.PropValue("controlWidth") %};
     margin: {%= controlAlign %};
 }
 #adc_{%= CurrentADC.InstanceId %}  #lightgallery {
     padding:0px;
     margin: 0 -{%= thumbMargin %}px;
+    {% IF isHorizontal = 1 Then %}
+      display: inline;
+    {% EndIf %}
 }
 #adc_{%= CurrentADC.InstanceId %} a {
     border: {%= CurrentADC.PropValue("thumbBorderThickness") %} {%= CurrentADC.PropValue("thumbBorderStyle") %} rgb({%= CurrentADC.PropValue("thumbBorderColour") %});
@@ -37,12 +50,19 @@ EndIf
     display:inline-block;
     margin: {%= thumbMargin %}px;
     vertical-align: top;
+    {% IF isHorizontal = 1 Then %}
+      margin: 0px;
+    {% EndIf %}
 }
 #adc_{%= CurrentADC.InstanceId %}  > ul > li a {
     display: block;
     float: left;
     overflow: hidden;
     position: relative;
+    {% IF isHorizontal = 1 Then %}
+      width:100%;
+      text-align: center;
+    {% EndIf %}
 }
 #adc_{%= CurrentADC.InstanceId %} .thumbnail {
     {% IF thumbMaxHW = "maxH" Then %}
@@ -69,13 +89,28 @@ EndIf
     display:block;
     clear:both;
     float:left;
+    {% IF isHorizontal = 1 Then %}
+      width: 150px !important;
+    {% EndIf %}
 }
 #adc_{%= CurrentADC.InstanceId %} .caption h4 { margin:0px; padding-top:5px; font-size: {%= fontSize %}; }
 #adc_{%= CurrentADC.InstanceId %} > ul > li a > img {
     transform: scale3d(1, 1, 1);
     transition: transform 0.15s ease 0s;
     width: 100%;
+    {% IF isHorizontal = 1 Then %}
+      width: auto;
+      max-height: 115px;
+    {% EndIf %}
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #adc_{%= CurrentADC.InstanceId %} > ul > li a > img {
+    width: auto;
+    max-width: 350px;
+  }
+}
+
 #adc_{%= CurrentADC.InstanceId %} > ul > li a:hover > img {
     transform: scale3d(1.1, 1.1, 1.1);
 }
