@@ -6,13 +6,14 @@
           askiaCompat="5.5.2">
   <info>
     <name>LightGallery</name>
-    <guid>s2141526-1cff-4825-827e-a44615d33578</guid>
-    <version>3.0.3</version>
-    <date>2016-06-07</date>
+    <guid>ad8f7bdc-a2e6-4395-a80b-a201502d1900</guid>
+    <version>3.0.4</version>
+    <date>2020-10-07</date>
     <description><![CDATA[Lightbox Gallery
 		v2.0.3 - Added alt attribute to img
     v3.0.1 - Horizontal orientation
-	v3.0.3 - Changed GUID cause was the same as ImageLightbox]]></description>
+	v3.0.3 - Changed GUID cause was the same as ImageLightbox
+  v3.0.4 - Changed GUID]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>]]></author>
     <site>http://www.askia.com</site>
